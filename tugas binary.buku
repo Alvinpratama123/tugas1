@@ -1,0 +1,50 @@
+def search_book(rack, book_name):
+    for i, book in enumerate(rack):
+        if book_name.lower() in book[0].lower():
+            return i
+    return -1
+
+def main():
+    rack1 = [("Doraemon", 1987), ("Hatori", 1988), ("Naruto", 1989)]
+    rack2 = [("Pantun", 2001), ("Dongeng", 2002), ("Sejarah", 2003)]
+    
+    while True:
+        print("\nMenu:")
+        print("1. Rak Buku 1")
+        print("2. Rak Buku 2")
+        print("3. Cari Buku")
+        print("4. Keluar")
+        choice = input("Masukkan pilihan: ")
+        
+        if choice == '1':
+            print("Isi yang ada di Rak 1:")
+            for i, (name, year) in enumerate(rack1):
+                print(f"{i+1}. Buku {name} {year}")
+        
+        elif choice == '2':
+            print("Isi yang ada di Rak 2:")
+            for i, (name, year) in enumerate(rack2):
+                print(f"{i+1}. Buku {name} {year}")
+        
+        elif choice == '3':
+            book_name = input("Nama buku: ")
+            result1 = search_book(rack1, book_name)
+            result2 = search_book(rack2, book_name)
+            
+            if result1 != -1:
+                print(f"Buku ditemukan di Rak Buku 1: {rack1[result1][0]} {rack1[result1][1]}")
+            elif result2 != -1:
+                print(f"Buku ditemukan di Rak Buku 2: {rack2[result2][0]} {rack2[result2][1]}")
+            else:
+                print("Buku tidak ditemukan dalam daftar")
+        
+        elif choice == '4':
+            print("Keluar dari program.")
+            break
+        
+        else:
+            print("Pilihan tidak valid, silakan coba lagi.")
+
+# Menjalankan program utama
+if __name__ == "__main__":
+    main()
