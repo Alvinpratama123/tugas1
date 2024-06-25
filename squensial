@@ -1,0 +1,55 @@
+def linear_search(names, target_name):
+    for i in range(len(names)):
+        if names[i].lower() == target_name.lower():  # Perbandingan tanpa memperhatikan huruf besar/kecil
+            return i
+    return -1
+
+# fungsi utama untuk menerima input dari pengguna
+def main():
+    names = []
+    while True:
+        print("\nMenu:")
+        print("1. Masukkan nama")
+        print("2. Tampilkan yang dicari")
+        print("3. Tambah nama")
+        print("4. Tampilkan semua nama")
+        print("5. Keluar")
+        choice = input("Masukkan pilihan: ")
+        
+        if choice == '1':
+            n = int(input("Masukkan jumlah nama: "))
+            for i in range(n):
+                name = input(f"Nama ke-{i+1}: ")
+                names.append(name)
+        
+        elif choice == '2':
+            target_name = input("Tampilkan nama yang dicari: ")
+            result = linear_search(names, target_name)
+            if result != -1:
+                print(f"{target_name} ditemukan di index ke-{result + 1}")
+            else:
+                print(f"{target_name} tidak ditemukan dalam daftar")
+        
+        elif choice == '3':
+            name = input("Nama yang ingin ditambah: ")
+            names.append(name)
+            print(f"Nama '{name}' ditambahkan pada index ke-{len(names)}")
+        
+        elif choice == '4':
+            if names:
+                print("Nama yang ditampilkan:")
+                for i, name in enumerate(names):
+                    print(f"Index ke-{i+1}: {name}")
+            else:
+                print("Daftar nama kosong.")
+        
+        elif choice == '5':
+            print("Keluar dari program.")
+            break
+        
+        else:
+            print("Pilihan tidak valid, silakan coba lagi.")
+
+# menjalankan fungsi utama
+if __name__ == "__main__":
+    main()
